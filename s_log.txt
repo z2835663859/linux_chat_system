@@ -1,0 +1,27 @@
+[2026-03-31 00:40:58] [INFO] ========== IM Server Starting ==========
+[2026-03-31 00:40:58] [INFO] Port: 9999
+[2026-03-31 00:40:58] [INFO] Initialized 3 test users: alice, bob, charlie
+[2026-03-31 00:40:58] [INFO] Listening on port 9999
+[2026-03-31 00:41:28] [DEBUG] Active connections: 0
+[2026-03-31 00:41:58] [DEBUG] Active connections: 0
+[2026-03-31 00:42:28] [DEBUG] Active connections: 0
+[2026-03-31 00:42:40] [INFO] New connection from 127.0.0.1:53240 (fd=4)
+[2026-03-31 00:42:59] [DEBUG] Active connections: 1
+[2026-03-31 00:43:29] [DEBUG] Active connections: 1
+[2026-03-31 00:43:56] [INFO] New connection from 127.0.0.1:53320 (fd=5)
+[2026-03-31 00:43:59] [DEBUG] Active connections: 2
+[2026-03-31 00:44:29] [DEBUG] Active connections: 2
+[2026-03-31 00:44:59] [DEBUG] Active connections: 2
+[2026-03-31 00:45:29] [DEBUG] Active connections: 2
+[2026-03-31 00:45:59] [DEBUG] Active connections: 2
+[2026-03-31 00:46:30] [DEBUG] Active connections: 2
+[2026-03-31 00:47:00] [DEBUG] Active connections: 2
+[2026-03-31 00:47:30] [DEBUG] Active connections: 2
+[2026-03-31 00:48:00] [WARN] Found 1 timeout connections
+[2026-03-31 00:48:00] [INFO] Closing timeout connection fd=4
+[2026-03-31 00:48:00] [DEBUG] Active connections: 1
+[2026-03-31 00:48:30] [DEBUG] Active connections: 1
+[2026-03-31 00:48:48] [INFO] New connection from 127.0.0.1:53548 (fd=4)
+[2026-03-31 00:49:01] [WARN] Found 1 timeout connections
+[2026-03-31 00:49:01] [INFO] Closing timeout connection fd=5
+[2026-03-31 00:49:01] [DEBUG] Active connections: 1

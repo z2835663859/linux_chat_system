@@ -1,0 +1,28 @@
+[2026-03-25 16:38:27] [INFO] ========== IM Server Starting ==========
+[2026-03-25 16:38:27] [INFO] Port: 9999
+[2026-03-25 16:38:27] [INFO] Initialized 3 test users: alice, bob, charlie
+[2026-03-25 16:38:27] [INFO] Listening on port 9999
+[2026-03-25 16:38:32] [INFO] New connection from 127.0.0.1:52559 (fd=4)
+[2026-03-25 16:38:32] [INFO] User alice (id=1) logged in
+[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
+[2026-03-25 16:38:32] [INFO] User id=1 logged out
+[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
+[2026-03-25 16:38:32] [INFO] Connection closed by peer (fd=4)
+[2026-03-25 16:38:32] [DEBUG] Connection closed, remaining: 0
+[2026-03-25 16:38:32] [INFO] New connection from 127.0.0.1:52560 (fd=4)
+[2026-03-25 16:38:32] [INFO] User bob (id=2) logged in
+[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
+[2026-03-25 16:38:32] [INFO] ChatTo: bob -> user 1: Hi alice, this is offline message from bob
+[2026-03-25 16:38:32] [DEBUG] Offline message saved: 2 -> 1
+[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
+[2026-03-25 16:38:32] [INFO] Connection closed by peer (fd=4)
+[2026-03-25 16:38:32] [DEBUG] Connection closed, remaining: 0
+[2026-03-25 16:38:33] [INFO] New connection from 127.0.0.1:52562 (fd=4)
+[2026-03-25 16:38:33] [INFO] User alice (id=1) logged in
+[2026-03-25 16:38:33] [DEBUG] Sent reply to fd=4
+[2026-03-25 16:38:33] [INFO] Pushing 1 offline messages to user 1
+[2026-03-25 16:38:33] [DEBUG] Queued offline message from user 2
+[2026-03-25 16:38:33] [INFO] Connection closed by peer (fd=4)
+[2026-03-25 16:38:33] [DEBUG] Connection closed, remaining: 0
+[2026-03-25 16:38:57] [DEBUG] Active connections: 0
+[2026-03-25 16:39:27] [DEBUG] Active connections: 0

@@ -1,0 +1,23 @@
+554:    pending_login_password_ = password;
+555-    
+556-    is_registering_ = false;
+557-    network_->connect_to_server(host, port);
+558-}
+559-
+560-void MainWindow::on_register_clicked() {
+561-    QString host = server_host_input_->text();
+562-    int port = server_port_input_->value();
+563-    QString username = reg_username_input_->text();
+564-    QString password = reg_password_input_->text();
+--
+580:    pending_login_password_ = password;
+581-    is_registering_ = true;
+582-    
+583-    network_->connect_to_server(host, port);
+584-}
+585-
+586-void MainWindow::on_connected() {
+587-    login_status_label_->setText("已连接...");
+588-    
+589-    if (!pending_login_username_.isEmpty()) {
+590-        if (is_registering_) {

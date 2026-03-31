@@ -1,0 +1,1 @@
+qt_client/src/network/im_client_network.cpp:11:QByteArray Codec::encode(const Packet& p) {

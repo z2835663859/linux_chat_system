@@ -1,0 +1,5 @@
+/Users/z2835663859/Qt_study/my_project/qt_client/build/CMakeFiles/im_client_gui.dir
+/Users/z2835663859/Qt_study/my_project/qt_client/build/CMakeFiles/edit_cache.dir
+/Users/z2835663859/Qt_study/my_project/qt_client/build/CMakeFiles/rebuild_cache.dir
+/Users/z2835663859/Qt_study/my_project/qt_client/build/CMakeFiles/im_client_gui_autogen_timestamp_deps.dir
+/Users/z2835663859/Qt_study/my_project/qt_client/build/CMakeFiles/im_client_gui_autogen.dir

@@ -1,0 +1,21 @@
+560:void MainWindow::on_register_clicked() {
+561-    QString host = server_host_input_->text();
+562-    int port = server_port_input_->value();
+563-    QString username = reg_username_input_->text();
+564-    QString password = reg_password_input_->text();
+565-    QString confirm_pwd = reg_password_confirm_input_->text();
+566-    
+567-    if (username.isEmpty() || password.isEmpty()) {
+568-        QMessageBox::warning(this, "错误", "用户名和密码不能为空！");
+569-        return;
+570-    }
+571-    if (password != confirm_pwd) {
+572-        QMessageBox::warning(this, "错误", "两次输入的密码不一致！");
+573-        return;
+574-    }
+575-    if (host.isEmpty()) {
+576-        host = "localhost";
+577-    }
+578-    
+579-    pending_login_username_ = username;
+580-    pending_login_password_ = password;
