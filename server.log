@@ -1,28 +1,23 @@
-[2026-03-25 16:38:27] [INFO] ========== IM Server Starting ==========
-[2026-03-25 16:38:27] [INFO] Port: 9999
-[2026-03-25 16:38:27] [INFO] Initialized 3 test users: alice, bob, charlie
-[2026-03-25 16:38:27] [INFO] Listening on port 9999
-[2026-03-25 16:38:32] [INFO] New connection from 127.0.0.1:52559 (fd=4)
-[2026-03-25 16:38:32] [INFO] User alice (id=1) logged in
-[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
-[2026-03-25 16:38:32] [INFO] User id=1 logged out
-[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
-[2026-03-25 16:38:32] [INFO] Connection closed by peer (fd=4)
-[2026-03-25 16:38:32] [DEBUG] Connection closed, remaining: 0
-[2026-03-25 16:38:32] [INFO] New connection from 127.0.0.1:52560 (fd=4)
-[2026-03-25 16:38:32] [INFO] User bob (id=2) logged in
-[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
-[2026-03-25 16:38:32] [INFO] ChatTo: bob -> user 1: Hi alice, this is offline message from bob
-[2026-03-25 16:38:32] [DEBUG] Offline message saved: 2 -> 1
-[2026-03-25 16:38:32] [DEBUG] Sent reply to fd=4
-[2026-03-25 16:38:32] [INFO] Connection closed by peer (fd=4)
-[2026-03-25 16:38:32] [DEBUG] Connection closed, remaining: 0
-[2026-03-25 16:38:33] [INFO] New connection from 127.0.0.1:52562 (fd=4)
-[2026-03-25 16:38:33] [INFO] User alice (id=1) logged in
-[2026-03-25 16:38:33] [DEBUG] Sent reply to fd=4
-[2026-03-25 16:38:33] [INFO] Pushing 1 offline messages to user 1
-[2026-03-25 16:38:33] [DEBUG] Queued offline message from user 2
-[2026-03-25 16:38:33] [INFO] Connection closed by peer (fd=4)
-[2026-03-25 16:38:33] [DEBUG] Connection closed, remaining: 0
-[2026-03-25 16:38:57] [DEBUG] Active connections: 0
-[2026-03-25 16:39:27] [DEBUG] Active connections: 0
+nohup: ignoring input
+[2026-03-31 14:54:32] [INFO] ========== IM Server Starting ==========
+[2026-03-31 14:54:32] [INFO] Port: 9999
+[2026-03-31 14:54:32] [INFO] Initialized 3 test users: alice, bob, charlie
+[2026-03-31 14:54:32] [INFO] Listening on port 9999
+[2026-03-31 14:55:02] [DEBUG] Active connections: 0
+[2026-03-31 14:55:32] [DEBUG] Active connections: 0
+[2026-03-31 14:56:02] [DEBUG] Active connections: 0
+[2026-03-31 14:56:32] [DEBUG] Active connections: 0
+[2026-03-31 14:57:02] [DEBUG] Active connections: 0
+[2026-03-31 14:57:32] [DEBUG] Active connections: 0
+[2026-03-31 14:58:02] [DEBUG] Active connections: 0
+[2026-03-31 14:58:32] [DEBUG] Active connections: 0
+[2026-03-31 14:59:02] [DEBUG] Active connections: 0
+[2026-03-31 14:59:32] [DEBUG] Active connections: 0
+[2026-03-31 15:00:02] [DEBUG] Active connections: 0
+[2026-03-31 15:00:32] [DEBUG] Active connections: 0
+[2026-03-31 15:01:02] [DEBUG] Active connections: 0
+[2026-03-31 15:01:32] [DEBUG] Active connections: 0
+[2026-03-31 15:02:02] [DEBUG] Active connections: 0
+[2026-03-31 15:02:32] [DEBUG] Active connections: 0
+[2026-03-31 15:03:02] [DEBUG] Active connections: 0
+[2026-03-31 15:03:32] [DEBUG] Active connections: 0

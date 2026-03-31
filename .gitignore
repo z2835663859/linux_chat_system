@@ -1,0 +1,11 @@
+
+*.log
+*.db
+build/
+qt_client/build/
+im_client
+server_im
+test_codec
+client_send
+users_db.txt
+

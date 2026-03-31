@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
   sockaddr_in addr{};
   addr.sin_family = AF_INET;
   addr.sin_port = htons(9999);
-  inet_pton(AF_INET, "127.0.0.1", &addr.sin_addr);
+  inet_pton(AF_INET, argc > 3 ? argv[3] : "127.0.0.1", &addr.sin_addr);
 
   if (connect(fd, (sockaddr*)&addr, sizeof(addr)) < 0) {
     perror("connect");

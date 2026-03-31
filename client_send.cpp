@@ -29,8 +29,10 @@ int main(int argc, char* argv[]) {
   }
 
   // macOS 下忽略 SIGPIPE 信号，防止服务端断开时 send 导致客户端崩溃
+#ifdef SO_NOSIGPIPE
   int set = 1;
   setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
+#endif
 
   // 初始化服务器地址结构
   sockaddr_in addr{};

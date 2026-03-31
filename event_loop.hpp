@@ -4,8 +4,19 @@
 #include <unordered_map>
 #include <sys/epoll.h>
 #include <unistd.h>
+
 namespace im {
-class EventHandler;
+
+// 事件处理器接口
+class EventHandler {
+public:
+  virtual ~EventHandler() = default;
+  virtual int get_fd() const = 0;
+  virtual void handle_read() = 0;
+  virtual void handle_write() = 0;
+  virtual void handle_error() = 0;
+};
+
 class EventLoop {
 public:
   static const int EVENT_READ = 1;
