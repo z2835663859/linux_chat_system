@@ -27,7 +27,7 @@
 
 ✅ **高级特性** (P2)
 - 离线消息存储与推送
-- 结构化日志系统输出
+- 结构化日志系统
 - 连接超时检测与定期清理
 - 群组管理与实时消息广播
 
@@ -73,81 +73,33 @@ linux_chat_system/
 │   ├── group_manager.hpp        # 分组管理
 │   └── group_manager.cpp
 │
-├── 服务端程序
-│   ├── server_im.cpp            # 完整 IM 服务器（包含P2特性）
-│   ├── server_simple.cpp        # 简化版（select + echo）
-│   ├── server_min.cpp           # 最小版（两客户端 demo）
-│   └── server_im                # 编译产物
-│
-├── 客户端程序
-│   ├── im_client.cpp            # 交互式命令行客户端
-│   ├── test_client.cpp          # 自动化测试客户端
-│   └── qt_client/               # 跨平台 图形界面 GUI 客户端
-│
+├── 核心程序
+│   ├── server_im.cpp            # 完整 IM 服务器入口文件
+│   └── client_send.cpp          # 命令行客户端测试程序
 └── 脚本/文档
-    ├── build.sh                 # 自动化编译脚本
+    └── build.sh                 # 自动化编译脚本
 ```
 
 ---
 
-## 🔧 编译说明
+## 🚀 场景一：完整通讯系统演示
 
-### 系统要求
-- **平台**：Ubuntu / Linux (底层依赖 epoll)
-- Clang/GCC C++17
-- 无额外第三方依赖，开箱即用
-
-### 编译命令
-
-#### 1️⃣ 一键自动编译（推荐）
-```bash
-# 赋予执行权限并构建所有目标
-chmod +x build.sh
-./build.sh all
-```
-*或者只构建服务端：`./build.sh server`*
-
-#### 2️⃣ 手动编译完整 IM 服务器
-```bash
-g++ -std=c++17 -Wall -Wextra -o server_im \
-  im_protocol.cpp event_loop.cpp conn.cpp server.cpp \
-  user_manager.cpp connection_manager.cpp message_handler.cpp \
-  message_storage.cpp logger.cpp connection_monitor.cpp group_manager.cpp \
-  server_im.cpp -pthread
-```
-
-#### 3️⃣ 编译交互式客户端
-```bash
-g++ -std=c++17 -Wall -Wextra -o im_client \
-  im_protocol.cpp im_client.cpp -pthread
-```
-
----
-
-## 🚀 快速开始
-
-### 场景 1：部署完整通讯系统
-
-#### 启动服务器
+### 启动服务器
 ```bash
 ./server_im 9999
 ```
 
 输出示例：
 ```text
-[INFO] [2026-03-31 16:30:00] [Server] IM Server started on 0.0.0.0:9999
-[INFO] [2026-03-31 16:30:00] [EventLoop] epoll init success, waiting for events...
+[Server] IM Server started on 0.0.0.0:9999
 ```
 
-### 场景 2：客户端互通测试 (本地双开终端模拟)
-
-#### 启动客户端 #1 (Alice)
+### 启动客户端 #1 (Alice)
 ```bash
 ./im_client 127.0.0.1 9999
 ```
-*(如果挂载在云服务器，请把 127.0.0.1 换成服务器公网IP)*
-
 交互示例：
+
 ```text
 > register alice 123456
 Register OK, your user ID is: 1
@@ -165,12 +117,12 @@ Pong
 Goodbye
 ```
 
-#### 启动客户端 #2 (Bob)
+### 启动客户端 #2 (Bob) - 另一个终端
 ```bash
 ./im_client 127.0.0.1 9999
 ```
+互动效果：
 
-互动示例：
 ```text
 > register bob 123456
 Register OK, your user ID is: 2
@@ -184,3 +136,131 @@ Message sent to user 1
 
 > quit
 ```
+
+## 🚀 场景二：自动化测试
+
+测试协议编码
+```bash
+./test_codec
+```
+
+输出：
+```text
+decoded #1 type=2 body={"text":"hello"}
+decoded #2 type=2 body={"text":"world"}
+```
+
+## 🚀 场景三：群组聊天功能测试
+
+```bash
+# 终端 1: 启动服务器
+./server_im 9999
+
+# 终端 2: 运行群组聊天测试
+python3 test_group_chat.py
+```
+测试包括：
+- 多用户同时连接
+- 创建群组
+- 成员加入/离开团体
+- 实时群组消息广播
+- 群体信息查询
+
+请参阅 `GROUP_CHAT_FEATURES.md`
+
+---
+
+## 📖 协议说明
+
+### 协议格式
+```text
+[Magic: 4 bytes][Type: 2 bytes][Body Length: 4 bytes][Body: Variable]
+```
+- **魔法 (Magic)**：`0x494D3031` (“IM01”)
+- **消息类型 (Type)**：2字节大端序
+  - `1` = 心跳
+  - `2` = 单聊 (CHAT)
+  - `3` = 注册
+  - `4` = 登录
+  - `5` = 登出
+  - `6` = 获取在线用户
+- **正文 (Body)**：变长 JSON 格式
+
+### 消息示例
+
+**登录请求** / **登录响应** / **单聊消息** (遵循上述 Type 映射与 JSON 规则)。
+
+---
+
+## 💡 使用示例 (Python 快速接入)
+
+示例 1：自动化方式(Python脚本示例)
+
+```python
+import socket
+import json
+import time
+import struct
+
+def send_message(sock, msg_type, body):
+    magic = 0x494D3031
+    body_bytes = json.dumps(body).encode('utf-8')
+    header = struct.pack('<IHI', magic, msg_type, len(body_bytes))
+    sock.send(header + body_bytes)
+
+sock = socket.socket(socket.AF_INET, socket.socket.SOCK_STREAM)
+sock.connect(('127.0.0.1', 9999))
+
+# 登录
+send_message(sock, 4, {"username": "alice", "password": "123"})
+print(sock.recv(1024).decode(errors='ignore'))
+sock.close()
+```
+
+---
+
+## 🧪 测试验证状态
+
+| 功能 | 状态 | 验证方式 |
+| :--- | :--- | :--- |
+| 协议编码 | ✅ | test_codec（粘包+半包）|
+| 用户注册/登录 | ✅ | im_client |
+| 单聊消息 | ✅ | im_client 互相通信 |
+| 心跳保活 | ✅ | im_client heartbeat 命令 |
+| 异常/错误处理 | ✅ | 离线用户提示、认证失败 |
+
+---
+
+## 🔍 调试技巧
+
+**查看服务器日志**
+启用转储日志到文件
+```bash
+./server_im 9999 > /tmp/im_server.log 2>&1 &
+```
+然后查看：
+```bash
+tail -f /tmp/im_server.log
+```
+使用 `netstat` 查看网络连接情况
+```bash
+netstat -an | grep 9999
+```
+
+---
+
+## 📝 常见问题与核心文件
+
+**Q1: 为什么消息没收到？**
+检查目标用户是否在线、是否登录成功。
+
+**📚 核心源码文件说明**
+- `im_protocol.hpp` / `cpp` - 协议层（处理粘包、半包解码）
+- `event_loop.hpp` / `cpp` - 基于 Epoll 的事件循环
+- `server.hpp` / `cpp` - 服务器端口监听与 Accept
+- `conn.hpp` / `cpp` - I/O 的收发缓冲封装
+- `user_manager.hpp` / `connection_manager.hpp` - 映射管理
+- `message_handler.hpp` - 解析 JSON 并路由命令
+
+> 📞 **如果有问题请务必检查**：编译是否确保开启了 C++17 特性支持！
+> **最后更新：2026年3月31日**
