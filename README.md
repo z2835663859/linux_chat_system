@@ -199,16 +199,15 @@ python3 test_group_chat.py
 ```python
 import socket
 import json
-import time
 import struct
 
 def send_message(sock, msg_type, body):
     magic = 0x494D3031
     body_bytes = json.dumps(body).encode('utf-8')
-    header = struct.pack('<IHI', magic, msg_type, len(body_bytes))
+    header = struct.pack('>IHI', magic, msg_type, len(body_bytes))
     sock.send(header + body_bytes)
 
-sock = socket.socket(socket.AF_INET, socket.socket.SOCK_STREAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(('127.0.0.1', 9999))
 
 # 登录

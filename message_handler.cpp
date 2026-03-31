@@ -574,7 +574,7 @@ Packet MessageHandler::handle_group_members(int fd, const Packet& pkt) {
   return reply;
 }
 
-Packet MessageHandler::handle_register(int fd, const Packet& pkt) {
+Packet MessageHandler::handle_register(int /*fd*/, const Packet& pkt) {
   std::string username, password;
   size_t user_pos = pkt.body.find("\"username\":\"");
   size_t pass_pos = pkt.body.find("\"password\":\"");
