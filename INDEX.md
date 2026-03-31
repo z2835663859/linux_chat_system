@@ -22,7 +22,7 @@
 ### 方法 1: 交互式快速启动 (推荐新手)
 
 ```bash
-cd /Users/z2835663859/Qt_study/my_project
+cd linux_chat_system
 ./start.sh
 ```
 
@@ -31,7 +31,7 @@ cd /Users/z2835663859/Qt_study/my_project
 ### 方法 2: 一键编译所有
 
 ```bash
-cd /Users/z2835663859/Qt_study/my_project
+cd linux_chat_system
 ./build.sh        # 编译所有
 ```
 
@@ -39,11 +39,11 @@ cd /Users/z2835663859/Qt_study/my_project
 
 ```bash
 # 终端1: 启动服务器
-cd /Users/z2835663859/Qt_study/my_project
+cd linux_chat_system
 ./build.sh server && ./server_im
 
 # 终端2: 启动客户端 (Alice)
-cd /Users/z2835663859/Qt_study/my_project
+cd linux_chat_system
 ./build.sh client && ./im_client
 
 # 在客户端中输入命令
@@ -123,7 +123,7 @@ cd /Users/z2835663859/Qt_study/my_project
 #### 方式 1: 使用编译脚本 (推荐)
 
 ```bash
-cd /Users/z2835663859/Qt_study/my_project
+cd linux_chat_system
 
 # 编译所有程序
 ./build.sh
@@ -224,7 +224,7 @@ decoded #2 type=2 body={"text":"world"}
 ## 📁 项目结构
 
 ```
-/Users/z2835663859/Qt_study/my_project/
+linux_chat_system/
 │
 ├── 📖 文档
 │   ├── README.md              # 项目完整说明 ← 首先看这个

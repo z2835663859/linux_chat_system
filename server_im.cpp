@@ -1,6 +1,6 @@
 // 完整的 IM 服务器实现（包含 P2 特性）
-// 编译: clang++ -std=c++17 -o server_im im_protocol.cpp user_manager.cpp connection_manager.cpp \
-//        message_handler.cpp message_storage.cpp logger.cpp connection_monitor.cpp group_manager.cpp server_im.cpp
+// 编译: clang++ -std=c++17 -o server_im im_protocol.cpp user_manager.cpp connection_manager.cpp
+//       message_handler.cpp message_storage.cpp logger.cpp connection_monitor.cpp group_manager.cpp server_im.cpp
 
 #include "im_protocol.hpp"
 #include "user_manager.hpp"
