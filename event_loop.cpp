@@ -12,8 +12,11 @@ EventLoop::EventLoop() : running_(false) {
 }
 EventLoop::~EventLoop() { if (poll_fd_ >= 0) close(poll_fd_); }
 void EventLoop::add_handler(int fd, std::shared_ptr<EventHandler> handler, int events) {
-  if (!handler) return; fd_to_handler_[fd] = handler;
-  struct epoll_event ev; ev.data.fd = fd; ev.events = 0;
+  if (!handler) return;
+  fd_to_handler_[fd] = handler;
+  struct epoll_event ev;
+  ev.data.fd = fd;
+  ev.events = 0;
   if (events & EVENT_READ) ev.events |= EPOLLIN;
   if (events & EVENT_WRITE) ev.events |= EPOLLOUT;
   epoll_ctl(poll_fd_, EPOLL_CTL_ADD, fd, &ev);

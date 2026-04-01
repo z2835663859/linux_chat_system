@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/socket.h>
-#include <sys/event.h>
 #include <cstdio>
 #include <cstring>
 
@@ -35,7 +34,7 @@ void Conn::enable_reading() {
   }
 
   if (loop_) {
-    loop_->mod_handler(fd_, EVFILT_READ);
+    loop_->mod_handler(fd_, EventLoop::EVENT_READ);
   }
 }
 
@@ -43,13 +42,13 @@ void Conn::enable_writing() {
   if (state_ != CONNECTED && state_ != CLOSING) return;
 
   if (loop_) {
-    loop_->mod_handler(fd_, EVFILT_READ | EVFILT_WRITE);
+    loop_->mod_handler(fd_, EventLoop::EVENT_READ | EventLoop::EVENT_WRITE);
   }
 }
 
 void Conn::disable_writing() {
   if (loop_) {
-    loop_->mod_handler(fd_, EVFILT_READ);
+    loop_->mod_handler(fd_, EventLoop::EVENT_READ);
   }
 }
 

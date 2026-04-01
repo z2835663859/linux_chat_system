@@ -1,0 +1,30 @@
+# macOS specific
+.DS_Store
+*.dSYM/
+*.o
+
+# Build artifacts and binaries
+server_im
+server_min
+server
+client_send
+im_client
+test_codec
+protatic
+qt_client/build/
+qt_client/build-*
+
+# Logs and DB
+*.log
+*.txt
+*.db
+!CMakeLists.txt
+!IM_Study_Guide_For_Resume.txt
+
+# Temp scripts
+patch*.py
+test_*.py
+check*.txt
+
+# Ignore PID and sockets
+*.pid

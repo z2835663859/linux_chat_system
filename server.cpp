@@ -4,7 +4,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <sys/event.h>
 #include <cstdio>
 #include <cstring>
 #include <stdexcept>
@@ -65,7 +64,7 @@ bool Server::start() {
   fcntl(listen_fd_, F_SETFL, flags | O_NONBLOCK);
 
   // 注册 listen socket 到事件循环
-  loop_->add_handler(listen_fd_, shared_from_this(), EVFILT_READ);
+  loop_->add_handler(listen_fd_, shared_from_this(), EventLoop::EVENT_READ);
 
   return true;
 }
@@ -112,7 +111,7 @@ void Server::handle_read() {
     connections_[client_fd] = conn;
 
     // 注册到事件循环
-    loop_->add_handler(client_fd, conn, EVFILT_READ);
+    loop_->add_handler(client_fd, conn, EventLoop::EVENT_READ);
 
     // 启用读事件
     conn->enable_reading();

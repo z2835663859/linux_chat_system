@@ -1,2 +1,0 @@
-Binary file ./bin/im_client_gui matches
-Binary file ./CMakeFiles/im_client_gui.dir/src/network/im_client_network.cpp.o matches

@@ -1,2 +1,0 @@
-11:QByteArray Codec::encode(const Packet& p) {
-253:    QByteArray data = Codec::encode(pkt);
